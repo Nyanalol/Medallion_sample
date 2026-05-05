@@ -1,0 +1,778 @@
+﻿Table of contents 
+			
+			
+				
+				Exit editor mode
+			
+		
+
+	
+
+			
+				
+					
+		
+			
+				
+		
+			
+				
+					
+				
+			
+			
+
+		
+
+		
+	 
+		
+			
+		
+			
+				
+			
+		
+		
+			
+				
+			
+			Ask Learn
+		
+		
+			
+				
+			
+			Ask Learn
+		
+	 
+
+			
+				
+					
+						
+					
+				
+				
+					
+		
+			
+				
+			
+			Reading mode
+		
+	 
+		
+			
+			Table of contents
+		
+	 
+		
+			
+				
+			
+			Read in English
+		
+	
+					
+		
+			
+				
+			
+			Add
+		
+	 
+		
+			
+				
+			
+			Add to plan
+		
+	 
+					
+		
+			
+				
+			
+			Edit
+		
+	  
+		
+		
+				
+					
+						
+						
+						
+					
+					Copy Markdown
+				
+		   
+				
+					
+						
+					
+					Print
+				
+		  
+	
+				
+
+			
+		
+
+	
+			
+
+		
+
+	  
+		
+		
+			
+			
+				
+					
+						
+						Note
+					
+
+					
+						Access to this page requires authorization. You can try signing in or changing directories.
+					
+
+					
+						Access to this page requires authorization. You can try changing directories.
+					
+
+				
+
+			
+
+		
+
+	
+					
+# Current limitations of graph in Microsoft Fabric
+
+					
+		
+			 
+				
+					
+		
+			
+				
+			
+			Feedback
+		
+	
+				
+
+		  
+		
+
+	 
+		
+			
+				
+					
+				
+				
+					
+						Summarize this article for me
+					
+				
+			
+
+			
+			
+
+		
+
+	 
+		
+			
+				In this article
+			
+		
+	
+					
+Note
+
+This feature is currently in public preview. This preview is provided without a service-level agreement, and isn't recommended for production workloads. Certain features might not be supported or might have constrained capabilities. For more information, see Supplemental Terms of Use for Microsoft Azure Previews.
+
+While graph in Microsoft Fabric is in preview, the service has certain functional and performance limitations. This article highlights some key limitations but isn't an exhaustive list. Check back regularly for updates.
+
+For help with common problems, see Troubleshooting graph.
+
+## Creating graph models
+
+### Data sources
+
+- OneLake parquet and CSV files are the only data sources currently supported.
+
+- Support for Power BI semantic models as data sources is under development.
+
+- Support for column- and row-level OneLake security is under development.
+
+- Support for Lakehouse with schema is under development.
+
+### Data types
+
+Graph currently supports the following data types:
+
+- Boolean (values are true and false)
+
+- Double (values are 64-bit floating point numbers)
+
+- Integer (values are 64-bit signed integers)
+
+- String (values are Unicode character strings)
+
+- Zoned DateTime (values are timestamps together with a timeshift for the time zone)
+
+The following OneLake types are supported:
+
+- IntegerType
+
+- LongType
+
+- StringType
+
+- DoubleType
+
+- BooleanType
+
+- FloatType
+
+- ByteType
+
+- ArrayType
+
+- DateType
+
+- TimestampNtzType
+
+- TimestampType
+
+### Edge creation
+
+During graph modeling, give different graph edge types different names.
+
+For example, a social media data set might represent "user likes comment" and "user likes post." If your graph model uses separate node types for _comment_ and _post_, then the _user_ node type has two types of "likes" edges to _comment_ and _post_. You might name these edges _userLikesComment_ and _userLikesPost_.
+
+### Graph creation time
+
+Up to once a week, a graph model might encounter a timeout if the graph creation or update takes longer than 20 minutes. The operation is marked as failed.
+
+However, users can reinitiate graph creation or update.
+
+### Total number of graph instances
+
+Each Fabric Workspace can have up to 10 graph instances.
+
+### Size of graph
+
+Creating graphs with more than 500 million nodes and edges might result in unstable performance.
+
+### Multitasking UI
+
+The graph model might disappear or become empty when you switch between tabs or windows in the Fabric multitask UI. The product team is actively working to resolve this known problem.
+
+### Node property selection
+
+When you add a node type to your graph model, all columns from the source table are added as properties by default. You can remove properties by selecting the trashcan icon. Edge types work differently - they start with no properties, and you add only the ones you need. Choosing a custom display label (for example, displaying a name instead of an ID) isn't yet supported.
+
+## Querying
+
+### Number of hops in multihop queries
+
+Graph currently supports up to eight hops on variable length patterns.
+
+### Size of results
+
+Aggregation performance can be unstable when results exceed 128 MB in size.
+
+The system currently truncates responses that are larger than 64 MB.
+
+### Timeout
+
+Queries time out if they take more than 20 minutes.
+
+## Data export and visualization
+
+- Exporting graph query results or graph structures isn't currently supported.
+
+- Connecting Power BI directly to a graph for visualization scenarios isn't currently supported.
+
+## GQL conformance
+
+For a detailed mapping of supported GQL features against the ISO/IEC 39075:2024 standard, including minimum conformance, optional features by group, and features not yet supported, see GQL standard conformance.
+
+Graph supports the following query features from the GQL standard:
+
+- FILTER statement
+
+- LET statement
+
+- Basic linear statement chaining
+
+- Full linear statement chaining
+
+- MATCH statement
+
+- OPTIONAL MATCH statement
+
+- Simple RETURN statement
+
+- Conjunction and disjunction
+
+- Negation
+
+- Local pattern predicates
+
+- Pattern property specifications
+
+- Simple anonymous patterns
+
+- Simple named edge patterns
+
+- Path patterns
+
+- Disconnected path patterns
+
+- Joined path patterns
+
+- Case mapping (US ASCII only)
+
+- STRING_JOIN function
+
+- COALESCE function
+
+- CASE expression
+
+- NULLIF expression
+
+- Property reference
+
+- Variable reference
+
+- Approximate numbers
+
+- Booleans
+
+- Character strings with escaping
+
+- Exact numbers
+
+- Arithmetic operators
+
+- Boolean conjunction
+
+- Boolean disjunction
+
+- Boolean negation
+
+- Boolean strict disjunction (XOR)
+
+- STARTS WITH predicate
+
+- Value comparison
+
+- Value equality
+
+- BOOL value type
+
+- EDGE reference value type
+
+- INT value type
+
+- INT64 value type
+
+- FLOAT value type
+
+- FLOAT64 value type
+
+- NODE reference value type
+
+- STRING value type
+
+- UINT value type
+
+- UINT64 value type
+
+- Explicit value type nullability (NOT NULL)
+
+- Character string concatenation
+
+- COUNT aggregate function
+
+- MAX aggregate function
+
+- MIN aggregate function
+
+- OFFSET and LIMIT statements
+
+- CREATE GRAPH statement
+
+- Closed graph type support
+
+- ORDER BY statement
+
+- RETURN statement with GROUP BY
+
+- RETURN statement with GROUP BY and slicing
+
+- List indexing
+
+- List value TRIM function
+
+- Character string length function
+
+- SIZE
+
+- Collection membership
+
+- Simple LIST value type
+
+- Null type and empty type
+
+- AVG aggregate function
+
+- COLLECT_LIST aggregate function
+
+- SUM aggregate function
+
+- CURRENT_DATETIME function
+
+- ZONED DATETIME value type
+
+- UNION ALL statement
+
+- Bounded graph pattern quantifiers
+
+- Group variables
+
+- Horizontal aggregation
+
+- LABELS function
+
+- ELEMENTS function
+
+- Basic GQL status codes
+
+- Formatting and parsing of GQL values
+
+- Statements with DISTINCT
+
+- Grouping
+
+- WALK path mode
+
+- TRAIL path mode
+
+- SIMPLE path mode
+
+- ACYCLIC path mode
+
+- Abbreviated edge patterns
+
+- Path binding
+
+- Path value constructor
+
+- Simple TRIM function
+
+- EDGES function
+
+- NODES function
+
+- Null
+
+- Path length function
+
+- CONTAINS predicate
+
+- ENDS WITH predicate
+
+- Null test predicate
+
+- PATH value type
+
+- Multiple node labels
+
+- Orderedness and Distinctness
+
+- Return type
+
+- Unicode validation
+
+- TO_JSON_STRING function
+
+Conformance to GQL standards is still in progress for:
+
+- Correct GQL status codes
+
+- CALL inline procedure statement
+
+- FOR statement with index
+
+- Regular FOR statement
+
+- NEXT
+
+- UNION DISTINCT statement
+
+- Unbounded graph pattern quantifiers
+
+- ALL SHORTEST path search
+
+- ANY path search
+
+- ANY SHORTEST path search
+
+- Substring functions
+
+- Unicode normalization functions
+
+- Data conversion
+
+- Scalar subqueries
+
+- PROPERTIES function
+
+- RANGE function
+
+- Record constructor
+
+- Enhanced numeric functions
+
+- Logarithmic functions
+
+- Trigonometric functions
+
+- Path value concatenation
+
+- Label test predicate
+
+- Normalized predicate
+
+- Source/destination predicate
+
+- Value type predicate
+
+- INT32 value type
+
+- FLOAT32 value type
+
+- RECORD value type
+
+- UINT32 value type
+
+- DURATION
+
+- ZONED TIME value type
+
+- DATE value type
+
+- Parameter passing
+
+- Undirected edges
+
+- GQL-preamble
+
+- Nonlocal pattern predicates
+
+- Undirected edge patterns
+
+- IS DIRECTED predicate
+
+- REGEXP_CONTAINS predicate
+
+- Dynamic parameter specification
+
+- Session user
+
+- ANY value type
+
+- BYTES value type
+
+- DECIMAL value type
+
+- LOCAL DATETIME value type
+
+- LOCAL TIME value type
+
+- CALL named procedure statement
+
+- ORDER BY with explicit NULL ordering
+
+- Tabular FOR statement
+
+- EXCEPT ALL statement
+
+- EXCEPT DISTINCT statement
+
+- INTERSECT ALL statement
+
+- INTERSECT DISTINCT statement
+
+- OTHERWISE statement
+
+- Wildcards
+
+- Relaxed topological consistency
+
+- PERCENTILE_CONT aggregate function
+
+- PERCENTILE_DISC aggregate function
+
+- PRODUCT aggregate function
+
+- STDDEV_POP aggregate function
+
+- STDDEV_SAMP aggregate function
+
+- Byte string concatenation
+
+- Byte string TRIM function
+
+- Simple TRIM function with TRIM specification
+
+- Multi-character TRIM function
+
+- Byte string length function
+
+- CARDINALITY
+
+- ALL_DIFFERENT predicate
+
+- IS DISTINCT predicate
+
+- SAME predicate
+
+## Related content
+
+- graph overview
+
+- What is a graph database?
+
+- Troubleshooting and FAQ for graph
+
+- Optimize GQL query performance in graph
+
+					
+		
+
+	 
+		
+
+		
+
+	
+					
+		
+		
+			
+			
+## Feedback
+
+			
+				
+					Was this page helpful?
+				
+
+				
+					
+						
+							
+						
+						Yes
+					
+					
+						
+							
+						
+						No
+					
+					
+						
+							
+								
+							
+							No
+						
+						
+							
+								Need help with this topic?
+							
+
+							
+								Want to try using Ask Learn to clarify or guide you through this topic?
+							
+
+							
+		
+			
+		
+			
+				
+			
+		
+		
+			
+				
+			
+			Ask Learn
+		
+		
+			
+				
+			
+			Ask Learn
+		
+	
+
+			
+				
+					
+				
+				 Suggest a fix? 
+			
+		
+
+	
+						
+
+					
+				
+
+			
+
+		
+		
+	
+				
+
+				
+		
+			
+			
+				Additional resources
+			
+			 
+		
+	 
+		
+	
+		
+
+	 
+		
+			
+			
+				
+			
+				Last updated on 
+		2026-04-24

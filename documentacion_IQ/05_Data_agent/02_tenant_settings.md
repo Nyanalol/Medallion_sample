@@ -1,0 +1,384 @@
+﻿Table of contents 
+			
+			
+				
+				Exit editor mode
+			
+		
+
+	
+
+			
+				
+					
+		
+			
+				
+		
+			
+				
+					
+				
+			
+			
+
+		
+
+		
+	 
+		
+			
+		
+			
+				
+			
+		
+		
+			
+				
+			
+			Ask Learn
+		
+		
+			
+				
+			
+			Ask Learn
+		
+	 
+
+			
+				
+					
+						
+					
+				
+				
+					
+		
+			
+				
+			
+			Reading mode
+		
+	 
+		
+			
+			Table of contents
+		
+	 
+		
+			
+				
+			
+			Read in English
+		
+	
+					
+		
+			
+				
+			
+			Add
+		
+	 
+		
+			
+				
+			
+			Add to plan
+		
+	 
+					
+		
+			
+				
+			
+			Edit
+		
+	  
+		
+		
+				
+					
+						
+						
+						
+					
+					Copy Markdown
+				
+		   
+				
+					
+						
+					
+					Print
+				
+		  
+	
+				
+
+			
+		
+
+	
+			
+
+		
+
+	  
+		
+		
+			
+			
+				
+					
+						
+						Note
+					
+
+					
+						Access to this page requires authorization. You can try signing in or changing directories.
+					
+
+					
+						Access to this page requires authorization. You can try changing directories.
+					
+
+				
+
+			
+
+		
+
+	
+					
+# Configure Fabric data agent tenant settings
+
+					
+		
+			 
+				
+					
+		
+			
+				
+			
+			Feedback
+		
+	
+				
+
+		  
+		
+
+	 
+		
+			
+				
+					
+				
+				
+					
+						Summarize this article for me
+					
+				
+			
+
+			
+			
+
+		
+
+	 
+		
+			
+				In this article
+			
+		
+	
+					To use a data agent in Microsoft Fabric, configure the required tenant settings. This guide walks you through the necessary configurations for a seamless setup.
+
+## Access tenant settings
+
+To configure the required settings, you need administrative privileges to access the **Admin Portal** in Microsoft Fabric.
+
+- **Sign in to Microsoft Fabric** with an admin account.
+**Open the Admin Portal**:
+
+- Select the gear icon in the top-right corner.
+
+- Select **Admin Portal**.
+
+**Navigate to Tenant Settings**:
+
+- In the Admin Portal, select **Tenant settings** from the left-hand navigation pane.
+
+When you're in **Tenant Settings**, enable the necessary configurations.
+
+Note
+
+The tenant settings might take up to one hour to take effect after you enable them.
+
+## Enable Copilot and Azure OpenAI tenant switch
+
+For a Fabric data agent to function properly, enable the **Copilot and Azure OpenAI Service** tenant settings. These settings control user access and data processing policies.
+
+### Required settings
+
+**Users can use Copilot and other features powered by Azure OpenAI**:
+
+- Enable this setting to allow users to access Copilot-powered features, including Fabric data agent. You can manage this setting at both the tenant and the capacity levels. For more information, see Overview of Copilot in Fabric.
+
+- To enable this setting, check the option in **Tenant Settings** as shown in the following screenshot:
+
+**Capacities can be designated as Fabric Copilot capacities**:
+
+- Enable this setting to allow capacity administrators to designate capacities as Fabric Copilot capacities for Copilot usage, including Fabric data agent.
+
+- For more information, see Capacities can be designated as Fabric Copilot capacities.
+
+**Data sent to Azure OpenAI can be processed outside your capacity's geographic region, compliance boundary, or national cloud instance**
+
+- Required for customers using Fabric data agent whose capacity's geographic region is outside of the EU data boundary and the US.
+
+- To enable this setting, check the option in **Tenant Settings** as shown in the following screenshot:
+
+**Data sent to Azure OpenAI can be stored outside your capacity's geographic region, compliance boundary, or national cloud instance**
+
+- Required for customers using Copilot in Notebooks and the Data agent Feature in Fabric powered by Azure OpenAI whose capacity's geographic region is outside of the EU data boundary and the US.
+
+- To enable this setting, check the option in **Tenant Settings** as shown in the following screenshot:
+
+**Conversation history stored outside your capacity's geographic region, compliance boundary, or national cloud instance**
+
+- This setting is only applicable for customers who want to use Copilot in Notebooks and Fabric data agents powered by Azure OpenAI whose capacity's geographic region is outside of the EU data boundary and the US.
+
+- In order to use fully conversational agentic AI experiences, the agent needs to store conversation history across user sessions. This ensures that the AI agent keeps context about what a user asked in previous sessions. Conversation history is stored for as long as the user allows, up to 28 days if not manually removed.
+
+- Users can delete their conversation history at any time by clearing the chat.
+
+- For more information, see Conversation history stored outside your capacity's geographic region.
+
+## Related content
+
+- Data agent concept
+
+- About tenant settings
+
+					
+		
+
+	 
+		
+
+		
+
+	
+					
+		
+		
+			
+			
+## Feedback
+
+			
+				
+					Was this page helpful?
+				
+
+				
+					
+						
+							
+						
+						Yes
+					
+					
+						
+							
+						
+						No
+					
+					
+						
+							
+								
+							
+							No
+						
+						
+							
+								Need help with this topic?
+							
+
+							
+								Want to try using Ask Learn to clarify or guide you through this topic?
+							
+
+							
+		
+			
+		
+			
+				
+			
+		
+		
+			
+				
+			
+			Ask Learn
+		
+		
+			
+				
+			
+			Ask Learn
+		
+	
+
+			
+				
+					
+				
+				 Suggest a fix? 
+			
+		
+
+	
+						
+
+					
+				
+
+			
+
+		
+		
+	
+				
+
+				
+		
+			
+			
+				Additional resources
+			
+			
+		
+	 
+		
+	 
+		
+	
+		
+
+	 
+		
+			
+			
+				
+			
+				Last updated on 
+		2026-04-21
